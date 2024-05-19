@@ -35,3 +35,5 @@ set(HEADERS
 
 target_sources(${PROJECT_NAME} PUBLIC ${HEADERS})
 
+
+include(CPack.cmake)
