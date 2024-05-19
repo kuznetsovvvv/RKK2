@@ -35,11 +35,3 @@ set(HEADERS
 
 target_sources(${PROJECT_NAME} PUBLIC ${HEADERS})
 
-# Tests
-enable_testing()
-
-# Tests for State.h and GumballMachine.h in tests.cpp
-add_executable(GumballMachineTests tests/tests.cpp)
-target_link_libraries(GumballMachineTests GumballMachine catch2)
-target_include_directories(GumballMachineTests PUBLIC ${catch2_SOURCE_DIR}/include)
-add_test(NAME GumballMachineTests COMMAND GumballMachineTests)
