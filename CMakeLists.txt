@@ -35,6 +35,7 @@ set(HEADERS
 
 target_sources(${PROJECT_NAME} PUBLIC ${HEADERS})
 include(CPack.cmake)
+set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${CMAKE_SOURCE_DIR}")
 
 if(BUILD_TESTS)
   add_compile_options(--coverage)
