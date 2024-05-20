@@ -33,7 +33,8 @@ set(HEADERS
     gumballmachine.h
 )
 
-target_sources(${PROJECT_NAME} PUBLIC ${HEADERS})
+target_include_directories(${PROJECT_NAME} PUBLIC ${HEADERS})
+
 include(CPack.cmake)
 set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${CMAKE_SOURCE_DIR}")
 
