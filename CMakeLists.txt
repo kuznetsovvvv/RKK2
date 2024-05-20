@@ -71,7 +71,7 @@ if(BUILD_TESTS)
 
   # Tests for State.h and gumballmachine.h in tests.cpp
   add_executable(GumballMachineTests tests/tests.cpp)
-  target_link_libraries(GumballMachineTests GumballMachineLib gtest gmock)
+  target_link_libraries(GumballMachineTests GumballMachineLib gtest_static gmock_static)
   target_include_directories(GumballMachineTests PUBLIC 
     ${googletest_SOURCE_DIR}/googletest/include 
     ${googlemock_SOURCE_DIR}/googlemock/include
@@ -93,3 +93,14 @@ set(CPACK_INSTALLED_DIRECTORIES
     "${CMAKE_CURRENT_SOURCE_DIR}/src" "src" 
     "${CMAKE_CURRENT_SOURCE_DIR}/tests" "tests" 
 )
+
+# Add code coverage support
+if (BUILD_TESTS)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+  target_compile_options(GumballMachineTests PUBLIC --coverage)
+  target_link_options(GumballMachineTests PUBLIC --coverage)
+  # Optionally install gcov to generate coverage reports
+  # find_package(GCov REQUIRED)
+  # target_link_libraries(GumballMachineTests GCov)
+endif()
