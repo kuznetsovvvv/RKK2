@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-set(SOURCES 
+set(SOURCES
     SoldState.cpp
     gumballmachine.cpp
     hasquarterstate.cpp
@@ -33,7 +33,6 @@ set(HEADERS
     gumballmachine.h
 )
 
-
 target_sources(${PROJECT_NAME} PUBLIC ${HEADERS})
 include(CPack.cmake)
 
@@ -50,7 +49,7 @@ if(BUILD_TESTS)
   add_subdirectory(third-party/gtest)
   file(GLOB CODE_TEST_SOURCES tests/*.cpp)
   add_executable(check ${CODE_TEST_SOURCES})
-  target_link_libraries(check code gtest_main gmock_main)
+  target_link_libraries(check gtest_main gmock_main)
   add_test(NAME check COMMAND check)
 endif()
 
